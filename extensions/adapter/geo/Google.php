@@ -40,7 +40,8 @@ class Google extends Base {
 		parent::_init();
 
 		$parse = function($data) {
-			$data = json_decode($data, true);
+			if (!is_array($data))
+				$data = json_decode($data, true);
 			if (!isset($data['results'][0])) {
 				return false;
 			}
